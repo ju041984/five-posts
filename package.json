@@ -1,0 +1,1 @@
+{"name":"five-post","version":"1.0.0","type":"module","description":"Five Post - Poster sans stresser","main":"server.js","scripts":{"start":"node server.js"},"dependencies":{"cors":"^2.8.5","dotenv":"^17.2.3","express":"^4.19.2","openai":"^6.15.0"}}
