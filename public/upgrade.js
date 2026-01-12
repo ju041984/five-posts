@@ -10,8 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
  });
 
  const data = await res.json();
- window.location.href = data.url;
 
+if (!data.url) {
+alert("Erreur Stripe : URL manquante");
+return;
+}
+
+window.location.href = data.url;
  } catch (err) {
  alert("Erreur Stripe. Réessaie.");
  console.error(err);
