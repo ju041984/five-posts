@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>5 Posts – Poster sans stresser</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+
+<img src="logo.png" alt="5 Posts" class="logo" />
+
+<h1>Poster sans stresser.</h1>
+<p class="subtitle">Parce que publier ne devrait pas ajouter à ta charge mentale.</p>
+<p class="intro">
+Five Posts t’aide à publier quand tu en as besoin,
+sans t’obliger à être constant, performant ou présent partout.
+</p>
+
+<p class="intro">
+L’objectif n’est pas d’en faire plus,
+mais de réduire la charge mentale liée à la publication.
+</p>
+
+<p class="intro">
+Tu génères tes posts, tu postes…
+ou tu fermes l’onglet.
+</p>
+
+<div class="selectors">
+<select id="platform">
+<option value="instagram">Instagram</option>
+<option value="twitter">X / Twitter</option>
+<option value="linkedin">LinkedIn</option>
+<option value="tiktok">TikTok</option>
+<option value="youtube">YouTube</option>
+</select>
+
+<select id="tone">
+ <option value="simple">Simple</option>
+ <option value="drole">Drôle</option>
+ <option value="professionnel">Professionnel</option>
+ <option value="inspirant">Inspirant</option>
+ <option value="provocant">Provocant</option>
+</select>
+
+<select id="intent">
+ <option value="exister">Exister</option>
+ <option value="vendre">Vendre</option>
+ <option value="engager">Engager</option>
+ <option value="informer">Informer</option>
+ <option value="communaute">Créer une communauté</option>
+</select>
+</div>
+
+<div class="moods">
+<button class="mood">Fatigué</button>
+<button class="mood">Focus</button>
+<button class="mood">Motivé</button>
+<button class="mood">Calme</button>
+<button class="mood">Journée grise</button>
+</div>
+
+<p class="free">
+☕ Une génération gratuite par jour.<br>
+Le reste du temps, fais autre chose.
+</p>
+
+<button id="generateBtn" class="primary">
+Générer mes 5 posts
+</button>
+<div id="blockedMessage" class="blocked hidden">
+<p>
+Tu as utilisé ta génération gratuite.<br>
+Reviens plus tard… ou continue à poster sans stresser ✨
+</p>
+</div>
+<p id="cooldownMessage" class="free hidden">
+⏳ La prochaine génération arrive tranquillement.
+</p>
+<p class="pro-hint">
+⏱️ Gagne du temps et libère ta tête.<br>
+Poste sans limite, sans attente.
+</p>
+<a href="/upgrade" id="upgradeBtn" class="upgrade hidden">
+🚀 Passer à 5 Posts Pro (illimité)
+</a>
+
+<div id="proBlock" class="pro-text hidden">
+<p>
+Tu peux continuer gratuitement.
+</p>
+
+<p>
+Ou passer à <strong>5 Posts Pro</strong><br>
+pour publier sans limite,<br>
+sans réfléchir au compteur,<br>
+sans attendre.
+</p>
+
+<p class="pro-note">
+Certains préfèrent attendre.<br>
+D’autres aiment être tranquilles tout de suite.<br><br>
+Les deux sont très bien.
+</p>
+</div>
+
+<p class="trust">
+Déjà utilisé par des créateurs pour poster plus vite, sans prise de tête.
+</p>
+<div id="posts-container" class="posts hidden"></div>
+
+<p class="free">
+☕ Une génération gratuite par jour.
+Le reste du temps, fais autre chose.
+</p>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

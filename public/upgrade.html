@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Débloque 5 Posts Pro</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+<div class="card">
+
+<h2>Débloque 5 Posts Pro</h2>
+
+<p class="pro-text">
+Tu peux continuer gratuitement.<br>
+Une génération par jour, sans pression.
+</p>
+
+<p class="pro-text">
+Ou passer à <strong>5 Posts Pro</strong><br>
+pour publier sans limite,<br>
+sans réfléchir au compteur,<br>
+sans attendre.
+</p>
+
+<ul class="pro-list">
+<li>Générations illimitées</li>
+<li>À ton rythme</li>
+<li>Résiliable à tout moment</li>
+</ul>
+
+<p class="price">4,99 € / mois</p>
+
+<button id="checkoutBtn" class="pro-btn">
+Débloquer 5 Posts Pro
+</button>
+
+<p class="pro-note">
+Certains préfèrent attendre.<br>
+D’autres aiment être tranquilles tout de suite.<br><br>
+Les deux sont très bien.
+</p>
+
+<p class="secure">
+Paiement sécurisé par Stripe
+</p>
+
+</div>
+</main>
+
+<script>
+document.getElementById("checkoutBtn").addEventListener("click", async () => {
+const res = await fetch("/create-checkout-session", { method: "POST" });
+const data = await res.json();
+window.location.href = data.url;
+});
+</script>
+
+</body>
+</html>
