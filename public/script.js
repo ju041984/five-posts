@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
  // GENERATE
  // ==============================
  generateBtn.addEventListener("click", async () => {
- console.log(" Click sur Générer");
+ console.log("Click sur Générer");
 
  if (!selectedMood) {
  alert("Choisis d’abord ton mood");
@@ -70,8 +70,25 @@ document.addEventListener("DOMContentLoaded", async () => {
  });
 
  const data = await res.json();
- console.log(" Réponse serveur :", data);
+ console.log("Réponse serveur :", data);
 
+ // CAS BLOQUÉ (FREE ou limite atteinte)
+ if (!data.pro) {
+ postsContainer.innerHTML = `
+ <div class="blocked">
+ <h3>Limite gratuite atteinte</h3>
+ <p>Tu as utilisé ta génération gratuite du jour.</p>
+ </div>
+ `;
+
+ if (upgradeBtn) {
+ upgradeBtn.classList.remove("hidden");
+ }
+
+ return; // IMPORTANT : on s'arrête ici
+ }
+
+ // CAS PRO → affichage des posts
  data.posts.forEach(p => {
  const post = document.createElement("div");
  post.className = "post";
@@ -79,15 +96,11 @@ document.addEventListener("DOMContentLoaded", async () => {
  postsContainer.appendChild(post);
  });
 
- if (!data.pro && upgradeBtn) {
- upgradeBtn.classList.remove("hidden");
- }
-
  postsContainer.scrollIntoView({ behavior: "smooth" });
 
  } catch (err) {
- console.error(" Erreur génération :", err);
+ console.error("Erreur génération :", err);
  alert("Erreur lors de la génération");
  }
- });
+});
 });
