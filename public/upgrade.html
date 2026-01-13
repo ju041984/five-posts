@@ -1,71 +1,70 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<title>Débloque 5 Posts Pro</title>
-<link rel="stylesheet" href="style.css" />
+ <meta charset="UTF-8" />
+ <title>Dé-stresse avec Five Posts Pro</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-<div style="
-margin: 20px 0;
-padding: 12px 16px;
-background: #f5f7fa;
-border-left: 4px solid #4f46e5;
-font-size: 14px;
-color: #333;
-">
-<strong>ℹ️ Mode test actif</strong><br>
-Le paiement est actuellement en <strong>mode test</strong>.<br>
-👉 <strong>Aucun montant ne sera débité</strong>, même si tu finalises le paiement.
-</div>
 <main class="container">
-<div class="card">
 
-<h2>Débloque 5 Posts Pro</h2>
+ <!-- INFO MODE TEST -->
+ <div class="info-test">
+ <strong>Mode test actif</strong><br>
+ Aucun montant ne sera débité, même si tu finalises le paiement.
+ </div>
 
-<p class="pro-text">
-Tu peux continuer gratuitement.<br>
-Une génération par jour, sans pression.
-</p>
+ <div class="card">
 
-<p class="pro-text">
-Ou passer à <strong>5 Posts Pro</strong><br>
-pour publier sans limite,<br>
-sans réfléchir au compteur,<br>
-sans attendre.
-</p>
+ <h1>Dé-stresse avec Five Posts Pro</h1>
 
-<ul class="pro-list">
-<li>Générations illimitées</li>
-<li>À ton rythme</li>
-<li>Résiliable à tout moment</li>
-</ul>
+ <p class="subtitle">
+ Tu peux continuer gratuitement.<br>
+ Une génération par jour, sans pression.
+ </p>
 
-<p class="price">4,99 € / mois</p>
+ <div class="divider"></div>
 
-<button id="checkoutBtn" class="pro-btn">
-Débloquer 5 Posts Pro
-</button>
+ <p class="pro-text">
+ Ou choisir de ne plus y penser du tout.
+ </p>
 
-<p class="pro-note">
-Certains préfèrent attendre.<br>
-D’autres aiment être tranquilles tout de suite.<br><br>
-Les deux sont très bien.
-</p>
+ <ul class="pro-list">
+ <li> Générations illimitées</li>
+ <li> Zéro compteur à surveiller</li>
+ <li> À ton rythme, quand tu veux</li>
+ <li> Résiliable à tout moment</li>
+ </ul>
 
-<p class="secure">
-Paiement sécurisé par Stripe
-</p>
+ <p class="price">
+ <strong>4,99 € / mois</strong>
+ </p>
 
-</div>
+ <button id="checkoutBtn" class="primary">
+ Débloquer Five Posts Pro
+ </button>
+
+ <p class="note">
+ Certains préfèrent attendre.<br>
+ D’autres aiment être tranquilles tout de suite.<br><br>
+ <strong>Les deux sont très bien.</strong>
+ </p>
+
+ </div>
+
 </main>
 
 <script>
-document.getElementById("checkoutBtn").addEventListener("click", async () => {
-const res = await fetch("/create-checkout-session", { method: "POST" });
-const data = await res.json();
-window.location.href = data.url;
-});
+ const btn = document.getElementById("checkoutBtn");
+ if (btn) {
+ btn.addEventListener("click", async () => {
+ const res = await fetch("/create-checkout-session", { method: "POST" });
+ const data = await res.json();
+ if (data.url) window.location.href = data.url;
+ });
+ }
 </script>
 
 </body>
