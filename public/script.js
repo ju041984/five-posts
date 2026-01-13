@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
  console.log("script.js chargé");
 
  // ==============================
@@ -7,11 +7,6 @@ document.addEventListener("DOMContentLoaded", async () => {
  const generateBtn = document.getElementById("generateBtn");
  const upgradeBtn = document.getElementById("upgradeBtn");
  const postsContainer = document.getElementById("posts-container");
-
- if (!generateBtn) {
- console.error("Bouton generateBtn introuvable");
- return;
- }
 
  let selectedMood = null;
 
@@ -29,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
  });
 
  // ==============================
- // CHECK PRO (localStorage)
+ // PRO STATUS (local)
  // ==============================
  const proEmail = localStorage.getItem("proEmail");
 
@@ -73,9 +68,9 @@ document.addEventListener("DOMContentLoaded", async () => {
  console.log("Réponse serveur :", data);
 
  // ==============================
- // CAS BLOQUÉ → uniquement si le serveur le dit
+ // CAS BLOQUÉ (limite atteinte)
  // ==============================
- if (data.error) {
+ if (!res.ok || data.error) {
  postsContainer.innerHTML = `
  <div class="blocked">
  <h3>Limite gratuite atteinte</h3>
