@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
  const postsContainer = document.getElementById("posts-container");
 
  if (!generateBtn) {
- console.error(" Bouton generateBtn introuvable");
+ console.error("Bouton generateBtn introuvable");
  return;
  }
 
@@ -29,13 +29,13 @@ document.addEventListener("DOMContentLoaded", async () => {
  });
 
  // ==============================
- // CHECK PRO (A4)
+ // CHECK PRO
  // ==============================
  const proEmail = localStorage.getItem("proEmail");
 
  if (proEmail && upgradeBtn) {
  upgradeBtn.classList.add("hidden");
- console.log(" Utilisateur PRO détecté");
+ console.log("Utilisateur PRO détecté");
  }
 
  // ==============================
@@ -72,8 +72,10 @@ document.addEventListener("DOMContentLoaded", async () => {
  const data = await res.json();
  console.log("Réponse serveur :", data);
 
- // CAS BLOQUÉ (FREE ou limite atteinte)
- if (!data.pro) {
+ // ==============================
+ // CAS LIMITE ATTEINTE
+ // ==============================
+ if (!data.posts || data.posts.length === 0) {
  postsContainer.innerHTML = `
  <div class="blocked">
  <h3>Limite gratuite atteinte</h3>
@@ -85,10 +87,12 @@ document.addEventListener("DOMContentLoaded", async () => {
  upgradeBtn.classList.remove("hidden");
  }
 
- return; // IMPORTANT : on s'arrête ici
+ return;
  }
 
- // CAS PRO → affichage des posts
+ // ==============================
+ // AFFICHAGE DES POSTS (FREE OU PRO)
+ // ==============================
  data.posts.forEach(p => {
  const post = document.createElement("div");
  post.className = "post";
@@ -98,9 +102,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
  postsContainer.scrollIntoView({ behavior: "smooth" });
 
+ // Si FREE → on affiche le bouton PRO après génération
+ if (!data.pro && upgradeBtn) {
+ upgradeBtn.classList.remove("hidden");
+ }
+
  } catch (err) {
  console.error("Erreur génération :", err);
  alert("Erreur lors de la génération");
  }
-});
+ });
 });
